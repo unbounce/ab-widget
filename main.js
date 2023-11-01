@@ -7,6 +7,22 @@
         elements.forEach(elem => elem.parentNode.removeChild(elem));
     }
 
+    // Function to inject CSS
+    function injectCSS(cssString) {
+        const style = document.createElement('style');
+        style.textContent = cssString;
+        document.head.appendChild(style);
+    }
+
+    // Inject the CSS
+    injectCSS(`
+        .ub-emb-close { display:none; }
+        .ub-emb-iframe-wrapper.ub-emb-visible {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    `);
+
     function adjustContainerStyles(container) {
         const iframes = container.querySelectorAll('iframe');
         iframes.forEach(iframe => {
